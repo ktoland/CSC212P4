@@ -49,10 +49,13 @@ public class InteractiveFiction {
 			if (words.size() == 0) {
 				System.out.println("Must type something!");
 				continue;
-			} else if (words.size() > 1) {
+			} else if(words.size() == 4) {
+				break;
+			}
+			else if (words.size() > 1) {
 				System.out.println("Only give me 1 word at a time!");
 				continue;
-			}
+			} 
 			
 			// Get the word they typed as lowercase, and no spaces.
 			String action = words.get(0).toLowerCase().trim();
