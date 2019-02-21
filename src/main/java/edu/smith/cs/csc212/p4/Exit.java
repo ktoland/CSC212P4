@@ -18,6 +18,11 @@ public class Exit {
 	private String target;
 	
 	/**
+	 * How we identify if an exit is secret
+	 */
+	 boolean hidden;
+	
+	/**
 	 * Create a new Exit.
 	 * @param target - where it goes.
 	 * @param description - how it looks.
@@ -25,6 +30,7 @@ public class Exit {
 	public Exit(String target, String description) {
 		this.description = description;
 		this.target = target;
+		this.hidden = false;
 	}
 	
 	/**
@@ -75,5 +81,19 @@ public class Exit {
 			return this.target.equals(rhs.target) && this.description.equals(rhs.description); 
 		}
 		return false;
+	}
+	
+	/**
+	 * @return if the exit is secret
+	 */
+	public boolean isSecret() {
+		return this.hidden;
+	}
+	
+	/**
+	 * TODO: need to comment
+	 */
+	public void search() {
+		
 	}
 }

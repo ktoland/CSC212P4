@@ -41,7 +41,10 @@ public class InteractiveFiction {
 			
 			for (int i=0; i<exits.size(); i++) {
 			    Exit e = exits.get(i);
-				System.out.println(" ["+i+"] " + e.getDescription());
+			    if(!e.isSecret()) {
+			    	System.out.println(" ["+i+"] " + e.getDescription());
+			    }
+				//TODO: System.out.println(" ["+i+"] " + e.getDescription());
 			}
 
 			// Figure out what the user wants to do, for now, only "quit" is special.
@@ -49,10 +52,7 @@ public class InteractiveFiction {
 			if (words.size() == 0) {
 				System.out.println("Must type something!");
 				continue;
-			} else if(words.size() == 4) {
-				break;
-			}
-			else if (words.size() > 1) {
+			} if (words.size() > 1) {
 				System.out.println("Only give me 1 word at a time!");
 				continue;
 			} 
@@ -66,6 +66,12 @@ public class InteractiveFiction {
 				} else {
 					continue;
 				}
+			}
+			
+			//Searches for secret exit
+			String search = words.get(0).toLowerCase().trim();
+			if(search.equals("search")) {
+				
 			}
 			
 			// From here on out, what they typed better be a number!

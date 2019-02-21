@@ -26,6 +26,10 @@ public class Place {
 	 * Whether reaching this place ends the game.
 	 */
 	private boolean terminal;
+	/**
+	 * This is a list of not hidden exits
+	 */
+	private List<Exit> visibleExits;
 	
 	/**
 	 * Internal only constructor for Place. Use {@link #create(String, String)} or {@link #terminal(String, String)} instead.
@@ -38,6 +42,7 @@ public class Place {
 		this.description = description;
 		this.exits = new ArrayList<>();
 		this.terminal = terminal;
+		this.visibleExits = new ArrayList<>();
 	}
 	
 	/**
@@ -45,6 +50,17 @@ public class Place {
 	 * @param exit - the description and target of the other Place.
 	 */
 	public void addExit(Exit exit) {
+		this.exits.add(exit);
+		if(exit.isSecret()) {
+			this.visibleExits.add(exit);
+		}
+	}
+	
+	/**
+	 * Create a secret exit for the user to get to the secret room
+	 * @param exit
+	 */
+	public void addSecretExit(SecretExit exit) {
 		this.exits.add(exit);
 	}
 	
